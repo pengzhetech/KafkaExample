@@ -11,7 +11,7 @@ public class ProducerDemo {
 
 	public static void main(String[] args) throws Exception {
 		Properties props = new Properties();
-		props.put("bootstrap.servers", "kafka0:9092");
+		props.put("bootstrap.servers", "localhost:9092");
 		props.put("acks", "all");
 		props.put("retries", 3);
 		props.put("batch.size", 16384);
@@ -24,7 +24,7 @@ public class ProducerDemo {
 
 		Producer<String, String> producer = new KafkaProducer<String, String>(props);
 		for (int i = 0; i < 10; i++)
-			producer.send(new ProducerRecord<String, String>("topic1", Integer.toString(i), Integer.toString(i)));
+			producer.send(new ProducerRecord<String, String>("test-topic", Integer.toString(i), Integer.toString(i)));
 		producer.close();
 	}
 
